@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7.16
+      - image: simonsdave/simonsdave/xenial-dev-env:latest
     working_directory: ~/repo
     steps:
       - checkout
