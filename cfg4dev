@@ -19,6 +19,8 @@ if [ -f "$PWD/requirements.txt" ]; then
             pip install "git+https://github.com/simonsdave/dev-env.git@$DEV_ENV_VERSION"
         fi
 
+        pip install --requirement "$PWD/requirements.txt"
+
         "$PWD/dev_env/build-docker-image.sh" "$DEV_ENV_DOCKER_IMAGE"
     fi
 
