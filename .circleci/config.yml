@@ -10,22 +10,12 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             - v1-dependencies-
-      - run:
-          name: debug
-          command: |
-            ls -lar
-      - run:
-          name: install dependencies
-          command: |
-            pip install --requirement requirements.txt
+      - run: pip install --requirement requirements.txt
       - save_cache:
           paths:
             - ./env
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-      - run:
-          name: run tests
-          command: |
-            nosetests
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+      - run: flake8
+      - run: pip check
+      - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
+      - run: python setup.py bdist_wheel sdist --formats=gztar
