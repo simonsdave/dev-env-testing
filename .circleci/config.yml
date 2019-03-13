@@ -13,7 +13,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            source cfg4dev
+            pip install requirements.txt
       - save_cache:
           paths:
             - ./env
