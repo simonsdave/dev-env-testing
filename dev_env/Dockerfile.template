@@ -1,0 +1,10 @@
+FROM simonsdave/xenial-dev-env:%DEV_ENV_VERSION%
+
+LABEL maintainer="Dave Simons"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV PATH "/app/bin:${PATH}"
+ENV PYTHONPATH /app
+
+WORKDIR /app
