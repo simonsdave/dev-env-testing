@@ -11,9 +11,13 @@ jobs:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             - v1-dependencies-
       - run:
+          name: debug
+          command: |
+            ls -lar
+      - run:
           name: install dependencies
           command: |
-            pip install dev-env/requirements.txt
+            pip install --requirement requirements.txt
       - save_cache:
           paths:
             - ./env

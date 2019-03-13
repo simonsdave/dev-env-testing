@@ -21,7 +21,7 @@ if [ -f "$PWD/requirements.txt" ]; then
 
         pip install --requirement "$PWD/requirements.txt"
 
-        "$PWD/dev_env/build-docker-image.sh" "$DEV_ENV_DOCKER_IMAGE"
+        # "$PWD/dev_env/build-docker-image.sh" "$DEV_ENV_DOCKER_IMAGE"
     fi
 
     export PATH="$PWD/bin":$PATH
