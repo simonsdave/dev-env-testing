@@ -15,7 +15,8 @@ jobs:
           paths:
             - ./env
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-      - run: flake8
       - run: pip check
-      - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
+      - run: flake8
+      - run: git log -p | scanrepo
       - run: python setup.py bdist_wheel sdist --formats=gztar
+      - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
