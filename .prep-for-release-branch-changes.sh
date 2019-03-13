@@ -13,7 +13,7 @@ RELEASE_BRANCH=${1:-}
 
 search_and_replace() {
     if ! git diff --quiet "${2:-}"; then exit 1; fi
-    sed -i -e "${1:-}" "${2:-}"
+    sed -i "" -e "${1:-}" "${2:-}"
     if git diff --quiet "${2:-}"; then exit 2; fi
     return 0
 }
