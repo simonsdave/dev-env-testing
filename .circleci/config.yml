@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: simonsdave/xenial-dev-env:latest
+        environment:
+          DOCKER_TEMP_IMAGE=simonsdave/cloudfeaster:bindle
     working_directory: ~/repo
     steps:
       - checkout
@@ -24,5 +26,9 @@ jobs:
       - run: ls -laR
       - setup_remote_docker:
       - run: docker images
-      - run: dockerfiles/build-docker-image.sh glob "$PWD/dist/dev_env_testing-*.*.*.tar.gz" "simonsdave/dev_env_testing:bindle"
+      - run: 
+          command: |
+	    CURRENT_VERSION=$(grep __version__ "$PWD/dev-env-testing/__init__.py"" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
+	    echo $CURRENT_VERSION
+            dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
       - run: docker images
