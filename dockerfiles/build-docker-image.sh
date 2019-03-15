@@ -15,6 +15,7 @@ IMAGE_NAME=${2:-}
 CONTEXT_DIR=$(mktemp -d 2> /dev/null || mktemp -d -t DAS)
 
 echo "DEBUG: >>>$DIST_TAR_GZ<<<"
+ls -la "$DIST_TAR_GZ"
 cp "$DIST_TAR_GZ" "$CONTEXT_DIR/dev_env_testing.tar.gz"
 docker build -t "$IMAGE_NAME" --file "$SCRIPT_DIR_NAME/Dockerfile" "$CONTEXT_DIR"
 
