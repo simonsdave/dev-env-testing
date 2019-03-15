@@ -20,3 +20,4 @@ jobs:
       - run: git log -p | scanrepo
       - run: python setup.py bdist_wheel sdist --formats=gztar
       - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
+      - run: docker --version
