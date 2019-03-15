@@ -24,5 +24,5 @@ jobs:
       - run: ls -laR
       - setup_remote_docker:
       - run: docker images
-      - run: dockerfiles/build-docker-image.sh "dist/dev_env_testing-*.*.*.tar.gz" "simonsdave/dev_env_testing:bindle"
+      - run: dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-*.*.*.tar.gz" "simonsdave/dev_env_testing:bindle"
       - run: docker images
