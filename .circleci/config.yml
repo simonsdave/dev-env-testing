@@ -22,6 +22,6 @@ jobs:
       - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
       - run: python setup.py bdist_wheel sdist --formats=gztar
       - setup_remote_docker:
-      - run: docker_images
+      - run: docker images
       - run: build-docker-image.sh "dist/dev_env_testing-*.*.*.tar.gz" "simonsdave/dev_env_testing:bindle"
-      - run: docker_images
+      - run: docker images
