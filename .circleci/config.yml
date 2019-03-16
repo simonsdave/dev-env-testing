@@ -27,5 +27,8 @@ jobs:
       - run: ls -laR
       - setup_remote_docker:
       - run: docker images
-      - run: dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$(current-python-version.sh).tar.gz" "$DOCKER_TEMP_IMAGE"
+      - run:
+          command: |
+            CURRENT_VERSION=$(grep __version__ "$PWD/dev_env_testing/__init__.py" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
+            dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
       - run: docker images
