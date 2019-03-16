@@ -20,6 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
       - run: pip check
       - run: flake8
+      - run: shellcheck $(find . -name \*.sh)
       - run: git log -p | scanrepo
       - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
       - run: python setup.py bdist_wheel sdist --formats=gztar
