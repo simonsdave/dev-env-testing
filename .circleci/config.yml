@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: simonsdave/xenial-dev-env:latest
         environment:
-          DOCKER_TEMP_IMAGE=simonsdave/cloudfeaster:bindle
+          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
     working_directory: ~/repo
     steps:
       - checkout
@@ -32,3 +32,36 @@ jobs:
             CURRENT_VERSION=$(grep __version__ "$PWD/dev_env_testing/__init__.py" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
       - run: docker images
+
+  build:
+    docker:
+      - image: simonsdave/xenial-dev-env:latest
+        environment:
+          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+jobs:
+  deploye:
+    docker:
+      - image: simonsdave/xenial-dev-env:latest
+        environment:
+          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
+    working_directory: ~/repo
+    steps:
+      - run: pwd
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - /^release-.*$/
