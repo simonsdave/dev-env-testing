@@ -1,11 +1,16 @@
 version: 2
+
+_defaults: &defaults
+  working_directory: ~/repo
+  docker:
+  - image: simonsdave/xenial-dev-env:latest
+  environment:
+    DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
+
 jobs:
   build:
-    docker:
-      - image: simonsdave/xenial-dev-env:latest
-        environment:
-          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
-    working_directory: ~/repo
+    <<: *defaults
+
     steps:
       - checkout
       - run: pwd
@@ -34,11 +39,8 @@ jobs:
       - run: docker images
 
   deploy:
-    docker:
-      - image: simonsdave/xenial-dev-env:latest
-        environment:
-          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
-    working_directory: ~/repo
+    <<: *defaults
+
     steps:
       - run: pwd
 
