@@ -42,7 +42,7 @@ jobs:
     <<: *defaults
 
     steps:
-      - run: pwd
+      - run: docker images
 
 workflows:
   version: 2
