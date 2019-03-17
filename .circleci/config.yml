@@ -13,7 +13,6 @@ jobs:
 
     steps:
       - checkout
-      - run: pwd
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
@@ -29,14 +28,11 @@ jobs:
       - run: git log -p | scanrepo
       - run: nosetests --with-coverage --cover-branches --cover-erase --cover-package dev_env_testing
       - run: python setup.py bdist_wheel sdist --formats=gztar
-      - run: ls -laR
       - setup_remote_docker:
-      - run: docker images
       - run:
           command: |
             CURRENT_VERSION=$(grep __version__ "$PWD/dev_env_testing/__init__.py" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
-      - run: docker images
 
   deploy:
     <<: *defaults
