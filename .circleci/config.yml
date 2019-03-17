@@ -42,8 +42,7 @@ jobs:
     steps:
       - checkout
 
-jobs:
-  deploye:
+  deploy:
     docker:
       - image: simonsdave/xenial-dev-env:latest
         environment:
