@@ -33,15 +33,6 @@ jobs:
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
       - run: docker images
 
-  build:
-    docker:
-      - image: simonsdave/xenial-dev-env:latest
-        environment:
-          DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
-    working_directory: ~/repo
-    steps:
-      - checkout
-
   deploy:
     docker:
       - image: simonsdave/xenial-dev-env:latest
