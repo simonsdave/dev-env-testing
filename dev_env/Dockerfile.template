@@ -4,6 +4,10 @@ LABEL maintainer="Dave Simons"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --requirement "/tmp/requirements.txt"
+RUN rm "/tmp/requirements.txt"
+
 ENV PATH "/app/bin:${PATH}"
 ENV PYTHONPATH /app
 

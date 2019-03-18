@@ -15,10 +15,12 @@ fi
 
 DOCKER_IMAGE=${1:-}
 
+TEMP_DOCKERFILE=$(mktemp 2> /dev/null || mktemp -t DAS)
+cp "$SCRIPT_DIR_NAME/Dockerfile.template" "$TEMP_DOCKERFILE"
+
 CONTEXT_DIR=$(mktemp -d 2> /dev/null || mktemp -d -t DAS)
 
-TEMP_DOCKERFILE=$CONTEXT_DIR/Dockerfile
-cp "$SCRIPT_DIR_NAME/Dockerfile.template" "$TEMP_DOCKERFILE"
+cp "$SCRIPT_DIR_NAME/../requirements.txt" "$CONTEXT_DIR/."
 
 DEV_ENV_VERSION=$(cat "$SCRIPT_DIR_NAME/dev-env-version.txt")
 if [ "${DEV_ENV_VERSION:-}" == "master" ]; then
