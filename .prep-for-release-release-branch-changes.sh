@@ -14,11 +14,11 @@ RELEASE_BRANCH=${1:-}
 pushd "$SCRIPT_DIR_NAME"
 
 sed -i "" -e \
-    "s|?branch=master|?branch=$RELEASE_BRANCH|g" \
-    "README.md"
+    "s|tree/master|tree/$RELEASE_BRANCH|g" \
+    "$SCRIPT_DIR_NAME/README.md"
 
-build_readme_dot_rst.sh
-build_python_package.sh
+# build_readme_dot_rst.sh
+# build_python_package.sh
 
 popd
 
