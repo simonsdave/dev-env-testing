@@ -33,23 +33,31 @@ jobs:
           command: |
             CURRENT_VERSION=$(grep __version__ "$PWD/dev_env_testing/__init__.py" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
-
-  deploy:
-    <<: *defaults
-
-    steps:
-      - run: docker images
-
-workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - build
       - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-                - /^release-.*$/
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+              echo 'deploy latest'
+            fi
+            if [[ "${CIRCLE_BRANCH}" =~ ^release\-[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo 'deploy release'
+            fi
+
+#  deploy:
+#    <<: *defaults
+#
+#    steps:
+#      - run: docker images
+
+# workflows:
+#   version: 2
+#   build_and_deploy:
+#     jobs:
+#       - build
+#       - deploy:
+#           requires:
+#             - build
+#           filters:
+#             branches:
+#               only:
+#                 - master
+#                 - /^release-.*$/
