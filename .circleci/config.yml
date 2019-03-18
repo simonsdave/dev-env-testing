@@ -8,7 +8,7 @@ _defaults: &defaults
     DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
 
 jobs:
-  build:
+  build_test_deploy:
     <<: *defaults
 
     steps:
@@ -33,31 +33,48 @@ jobs:
           command: |
             CURRENT_VERSION=$(grep __version__ "$PWD/dev_env_testing/__init__.py" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$CURRENT_VERSION.tar.gz" "$DOCKER_TEMP_IMAGE"
+      - run: echo 'should do some integration testing on the docker image just created'
       - deploy:
           command: |
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              echo 'deploy latest'
+              dockerfiles/tag-and-push-docker-image.sh "$DOCKER_TEMP_IMAGE" "$DOCKER_PASSWORD" "latest"
             fi
             if [[ "${CIRCLE_BRANCH}" =~ ^release\-[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo 'deploy release'
+              dockerfiles/tag-and-push-docker-image.sh "$DOCKER_TEMP_IMAGE" "$DOCKER_PASSWORD" "v${CIRCLE_BRANCH##release-}"
             fi
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      build_test_deploy:
+        context: dev-env-testing
+
+#  test:
+#    <<: *defaults
+#
+#    steps:
+#      - run: ...
 
 #  deploy:
 #    <<: *defaults
 #
 #    steps:
-#      - run: docker images
+#      - run: ...
 
 # workflows:
 #   version: 2
-#   build_and_deploy:
+#   build_test_deploy:
 #     jobs:
 #       - build
-#       - deploy:
+#       - test:
 #           requires:
 #             - build
+#       - deploy:
+#           requires:
+#             - test
 #           filters:
 #             branches:
 #               only:
 #                 - master
-#                 - /^release-.*$/
+#                 - ^release\-[0-9]+\.[0-9]+\.[0-9]+$
