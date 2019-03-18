@@ -1,0 +1,10 @@
+[run]
+branch = True
+include =
+    ./dev_env_testing/*
+omit =
+    *tests*
+    *__init__*
+
+[html]
+directory = coverage_report
