@@ -30,7 +30,7 @@ jobs:
           name: Lint bash scripts
           command: shellcheck $(find . -name \*.sh)
       - run: 
-          name: Repo scan for passwords, private keys, etc.
+          name: Scan repo for passwords, private keys, etc.
           command: git log -p | scanrepo
       - run: 
           name: Run unit tests
