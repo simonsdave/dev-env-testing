@@ -47,8 +47,8 @@ workflows:
   version: 2
   build_test_deploy:
     jobs:
-      build_test_deploy:
-        context: dev-env-testing
+      - build_test_deploy:
+          context: dev-env-testing
 
 #  test:
 #    <<: *defaults
