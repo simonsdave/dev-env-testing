@@ -2,7 +2,7 @@
 
 #
 # Assuming <existing-image-name> is of the format <hub-user>/<repo-name>:<old-tag>,
-# tag <existing-image-name> as <hub-user>/<repo-name>:<tag>, login do dockerhub using
+# tag <existing-image-name> as <hub-user>/<repo-name>:<tag>, login to dockerhub using
 # <hub-user> plus <password> and then push <hub-user>/<repo-name>:<tag> to dockerhub.
 #
 
