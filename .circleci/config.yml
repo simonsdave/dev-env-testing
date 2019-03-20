@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$(current-python-version.sh).tar.gz" "$DOCKER_TEMP_IMAGE"
+            dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$(python-version.sh).tar.gz" "$DOCKER_TEMP_IMAGE"
       - run:
           name: Test docker image
           command: echo 'should do some integration testing on the docker image just created'
