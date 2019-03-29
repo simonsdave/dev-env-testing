@@ -9,13 +9,13 @@
 set -e
 
 if [ $# != 3 ]; then
-    echo "usage: $(basename "$0") <existing-image-name> <password> <tag>" >&2
+    echo "usage: $(basename "$0") <existing-image-name> <tag> <password>" >&2
     exit 1
 fi
 
 EXISTING_IMAGE_NAME=${1:-}
-PASSWORD=${2:-}
-TAG=${3:-}
+TAG=${2:-}
+PASSWORD=${3:-}
 
 NEW_IMAGE_NAME="${EXISTING_IMAGE_NAME%:*}:${TAG}"
 
