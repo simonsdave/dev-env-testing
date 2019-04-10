@@ -2,13 +2,15 @@ FROM simonsdave/xenial-dev-env:%DEV_ENV_VERSION%
 
 LABEL maintainer="Dave Simons"
 
+ARG PACKAGE
+
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --requirement "/tmp/requirements.txt"
-RUN rm "/tmp/requirements.txt"
+RUN mkdir /tmp/$PACKAGE
+ADD package.tar /tmp/$PACKAGE/.
 
-ENV PATH "/app/bin:${PATH}"
-ENV PYTHONPATH /app
+RUN cd /tmp/$PACKAGE && pip install --requirement "requirements.txt"
 
-WORKDIR /app
+RUN rm -rf "/tmp/$PACKAGE"
+
+ENV DEBIAN_FRONTEND newt

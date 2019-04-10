@@ -44,6 +44,7 @@ setup(
         'dev_env_testing',
     ],
     scripts=[
+        'bin/no-op.sh',
     ],
     install_requires=[
     ],
