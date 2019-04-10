@@ -1,8 +1,6 @@
 if [ -f "$PWD/requirements.txt" ]; then
     # per guidelines in https://github.com/simonsdave/dev-env
-    export DEV_ENV_SOURCE_CODE=$PWD
     export DEV_ENV_DOCKER_IMAGE="simonsdave/dev-env-testing-xenial-dev-env:build"
-    export DEV_ENV_PACKAGE=dev_env_testing
 
     if [ -d "$PWD/env" ]; then
         source "$PWD/env/bin/activate"
@@ -18,7 +16,6 @@ if [ -f "$PWD/requirements.txt" ]; then
     fi
 
     export PATH="$PWD/bin":$PATH
-    export PYTHONPATH="$PWD"
 else
     echo "Must source this script from project's root directory" >&2
     return 1
