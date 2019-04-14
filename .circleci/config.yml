@@ -27,13 +27,13 @@ jobs:
       - run: run-pip-check.sh
       - run:
           name: Lint Python Files
-          command: bin/run-flake8.sh
+          command: run-flake8.sh
       - run:
           name: Lint Shell Scripts
-          command: bin/run-shellcheck.sh
+          command: run-shellcheck.sh
       - run:
           name: Lint YAML Files
-          command: bin/run-yamllint.sh
+          command: run-yamllint.sh
       - run: 
           name: Scan repo for passwords, private keys, etc.
           command: run-repo-security-scanner.sh
