@@ -1,9 +1,10 @@
+---
 version: 2
 
 _defaults: &defaults
   working_directory: ~/repo
   docker:
-  - image: simonsdave/xenial-dev-env:latest
+    - image: simonsdave/xenial-dev-env:latest
   environment:
     DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
 
@@ -34,16 +35,16 @@ jobs:
       - run:
           name: Lint YAML Files
           command: run-yamllint.sh
-      - run: 
+      - run:
           name: Scan repo for passwords, private keys, etc.
           command: run-repo-security-scanner.sh
-      - run: 
+      - run:
           name: Snyk vulnerability assessment
           command: run-snyk.sh "$SNYK_TOKEN"
-      - run: 
+      - run:
           name: Run unit tests
           command: run-unit-tests.sh
-      - run: 
+      - run:
           name: Build python packages
           command: build-python-package.sh
       - setup_remote_docker:
