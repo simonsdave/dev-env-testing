@@ -13,8 +13,8 @@ jobs:
     working_directory: ~/repo
     executor: dev-env
     steps:
-      - run: check-consistent-dev-env-version.sh
       - checkout
+      - run: check-consistent-dev-env-version.sh
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
