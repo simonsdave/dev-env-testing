@@ -11,10 +11,8 @@ if [ $# != 0 ]; then
     exit 1
 fi
 
-REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
-REPO=$(basename "$REPO_ROOT_DIR")
-INIT_DOT_PY=$REPO_ROOT_DIR/${REPO//-/_}/__init__.py
-CURRENT_VERSION=$(grep __version__ "$INIT_DOT_PY" | sed -e "s|^.*=[[:space:]]*['\"]||g" | sed -e "s|['\"].*$||g")
+INIT_DOT_PY=$(repo-root-dir.sh)/$(repo.sh -u)/__init__.py
+CURRENT_VERSION=$(python-version.sh)
 
 # the pip install below is necessary make it super simple
 # to figure out the project's next version
