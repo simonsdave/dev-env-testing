@@ -13,12 +13,15 @@ RELEASE_BRANCH=${1:-}
 
 pushd "$SCRIPT_DIR_NAME"
 
-sed -i "" -e \
-    "s|tree/master|tree/$RELEASE_BRANCH|g" \
+sed -i "" \
+    -e "s|tree/master|tree/$RELEASE_BRANCH|g" \
     "$SCRIPT_DIR_NAME/README.md"
 
-# build_readme_dot_rst.sh
-# build_python_package.sh
+rm -f "$SCRIPT_DIR_NAME/README.rst"
+build-readme-dot-rst.sh
+
+rm -rf "$SCRIPT_DIR_NAME/dist"
+build-python-package.sh
 
 popd
 
