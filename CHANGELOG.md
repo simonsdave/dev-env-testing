@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Nothing
+* add ```run-bandit.sh``` to the CircleCI pipeline
 
 ### Changed
 
