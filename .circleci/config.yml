@@ -26,12 +26,17 @@ jobs:
           paths:
             - ./env
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-      - run: run-pip-check.sh
+      - run:
+          name: Scan Repo for Passwords, Private Keys, etc.
+          command: run-repo-security-scanner.sh
+      - run:
+          name: Run Pip Check
+          command: run-pip-check.sh
       - run:
           name: Lint Python Files
           command: run-flake8.sh
       - run:
-          name: PyCQA/bandit
+          name: Run Bandit
           command: run-bandit.sh
       - run:
           name: Lint Shell Scripts
@@ -40,27 +45,24 @@ jobs:
           name: Lint YAML Files
           command: run-yamllint.sh
       - run:
-          name: Scan repo for passwords, private keys, etc.
-          command: run-repo-security-scanner.sh
-      - run:
-          name: Snyk vulnerability assessment
+          name: Snyk Vulnerability Assessment
           command: run-snyk.sh "$SNYK_TOKEN"
       - run:
-          name: Run unit tests
+          name: Run Unit Tests
           command: run-unit-tests.sh
       - run:
-          name: Build python packages
+          name: Build Python Packages
           command: build-python-package.sh
       - setup_remote_docker
       - run:
-          name: Build docker image
+          name: Build Docker Image
           command: |
             dockerfiles/build-docker-image.sh "$PWD/dist/dev_env_testing-$(python-version.sh).tar.gz" "$DOCKER_TEMP_IMAGE"
       - run:
-          name: Test docker image
+          name: Test Docker Image
           command: echo 'should do some integration testing on the docker image just created'
       - deploy:
-          name: Push docker image to Dockerhub
+          name: Push Docker Image to Docker Hub
           command: |
             if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               dockerfiles/tag-and-push-docker-image.sh "$DOCKER_TEMP_IMAGE" "latest" "$DOCKER_PASSWORD"

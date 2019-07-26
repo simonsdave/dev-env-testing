@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 * dev_env v0.5.17 -> v0.5.22
+* updated CircleCI config to represent a good example of sequencing and naming
 
 ### Removed
 
