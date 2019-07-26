@@ -30,6 +30,12 @@ jobs:
           name: Scan Repo for Passwords, Private Keys, etc.
           command: run-repo-security-scanner.sh
       - run:
+          name: Lint Shell Scripts
+          command: run-shellcheck.sh
+      - run:
+          name: Lint YAML Files
+          command: run-yamllint.sh
+      - run:
           name: Run Pip Check
           command: run-pip-check.sh
       - run:
@@ -39,13 +45,7 @@ jobs:
           name: Run Bandit
           command: run-bandit.sh
       - run:
-          name: Lint Shell Scripts
-          command: run-shellcheck.sh
-      - run:
-          name: Lint YAML Files
-          command: run-yamllint.sh
-      - run:
-          name: Snyk Vulnerability Assessment
+          name: Run Snyk Vulnerability Assessment
           command: run-snyk.sh "$SNYK_TOKEN"
       - run:
           name: Run Unit Tests
