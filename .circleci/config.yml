@@ -6,7 +6,7 @@ executors:
     environment:
       DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
     docker:
-      - image: simonsdave/bionic-dev-env:latest
+      - image: simonsdave/bionic-dev-env:v0.6.1
 
 jobs:
   build_test_and_deploy:
