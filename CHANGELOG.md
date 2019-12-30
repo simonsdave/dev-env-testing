@@ -12,7 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-* Nothing
+* dev_env v0.6.1 -> v0.6.3
 
 ### Removed
 
