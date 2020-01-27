@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+# <release-branch> is assumed to be something like "release-0.9.32"
 
-SCRIPT_DIR_NAME="$( cd "$( dirname "$0" )" && pwd )"
+set -e
 
 if [ $# != 1 ]; then
     echo "usage: $(basename "$0") <release-branch>" >&2
@@ -11,18 +11,41 @@ fi
 
 RELEASE_BRANCH=${1:-}
 
-pushd "${SCRIPT_DIR_NAME}"
+REPO_ROOT_DIR=$(repo-root-dir.sh)
 
-sed -i "" \
-    -e "s|tree/master|tree/${RELEASE_BRANCH}|g" \
-    "${SCRIPT_DIR_NAME}/README.md"
+# README.md -------------------------------------------------------------------
 
-rm -f "${SCRIPT_DIR_NAME}/README.rst"
+#
+# badges
+#
+
+# requires.io
+sed -i '' \
+    -e \
+    "s|?branch=master|?branch=${RELEASE_BRANCH}|g" \
+    "${REPO_ROOT_DIR}/README.md"
+
+# CircleCI
+sed -i '' \
+    -e \
+    "s|/tree/master|/tree/${RELEASE_BRANCH}|g" \
+    "${REPO_ROOT_DIR}/README.md"
+
+# codecov
+sed -i '' \
+    -e \
+    "s|/branch/master|/branch/${RELEASE_BRANCH}|g" \
+    "${REPO_ROOT_DIR}/README.md"
+
+# don't need to do anything for docker images
+
+# -----------------------------------------------------------------------------
+
+rm -f "${REPO_ROOT_DIR}/README.rst"
 build-readme-dot-rst.sh
 
-rm -rf "${SCRIPT_DIR_NAME}/dist"
+rm -rf "${REPO_ROOT_DIR}/dist"
 build-python-package.sh
 
-popd
-
 exit 0
+

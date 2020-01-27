@@ -261,124 +261,124 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.8.0] - [2017-10-09]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.7.0] - [2017-10-01]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.6.0] - [2017-10-01]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.5.0] - [2017-09-19]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.4.0] - [2017-09-19]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.3.0] - [2017-09-19]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.2.0] - [2017-09-19]
 
 ### Added
 
-- Nothing
+* Nothing
 
 ### Changed
 
-- Nothing
+* Nothing
 
 ### Removed
 
-- Nothing
+* Nothing
 
 ## [0.1.0] - [2017-09-19]
 
 ### Added
 
-- ...
+* ...
 
 ### Changed
 
-- ...
+* ...
 
 ### Removed
 
-- ...
+* ...
