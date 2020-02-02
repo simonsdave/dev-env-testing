@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Nothing
+* add [codecov](https://codecov.io/gh/simonsdave/dev-env-testing)
 
 ### Changed
 

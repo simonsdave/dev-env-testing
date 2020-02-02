@@ -56,6 +56,9 @@ jobs:
           name: Run Unit Tests
           command: run-unit-tests.sh
       - run:
+          name: Upload Unit Test Coverage Data to Codecov
+          command: codecov
+      - run:
           name: Build README.rst
           command: build-readme-dot-rst.sh
       - run:
