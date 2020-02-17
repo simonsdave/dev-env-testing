@@ -13,10 +13,13 @@ SOURCE_PACKAGE=${1:-}
 IMAGE_NAME=${2:-}
 
 CONTEXT_DIR=$(mktemp -d 2> /dev/null || mktemp -d -t DAS)
+cp "${SOURCE_PACKAGE}" "${CONTEXT_DIR}/source-package.tar.gz"
 
-cp "$SOURCE_PACKAGE" "$CONTEXT_DIR/source-package.tar.gz"
-docker build -t "$IMAGE_NAME" --file "$SCRIPT_DIR_NAME/Dockerfile" "$CONTEXT_DIR"
+docker build \
+    -t "${IMAGE_NAME}" \
+    --file "${SCRIPT_DIR_NAME}/Dockerfile" \
+    "${CONTEXT_DIR}"
 
-rm -rf "$CONTEXT_DIR"
+rm -rf "${CONTEXT_DIR}"
 
 exit 0
