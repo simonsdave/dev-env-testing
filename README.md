@@ -8,6 +8,6 @@
 [![Requirements](https://requires.io/github/simonsdave/dev-env-testing/requirements.svg?branch=master)](https://requires.io/github/simonsdave/dev-env-testing/requirements/?branch=master)
 [![CircleCI](https://circleci.com/gh/simonsdave/dev-env-testing/tree/master.svg?style=shield)](https://circleci.com/gh/simonsdave/dev-env-testing/tree/master)
 [![codecov](https://codecov.io/gh/simonsdave/dev-env-testing/branch/master/graph/badge.svg)](https://codecov.io/gh/simonsdave/dev-env-testing/branch/master)
-[![docker-simonsdave/dev-env-testing-database](https://img.shields.io/badge/docker-simonsdave%2Fdev%20env%20testing-blue.svg)](https://hub.docker.com/r/simonsdave/dev-env-testing/)
+[![docker-simonsdave/dev-env-testing-database](https://img.shields.io/badge/docker-simonsdave%2Fdev--env--testing-blue.svg)](https://hub.docker.com/r/simonsdave/dev-env-testing/)
 
 Repo for testing [dev-env](https://github.com/simonsdave/dev-env) functionality.
