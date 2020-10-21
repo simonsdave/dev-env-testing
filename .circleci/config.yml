@@ -7,6 +7,9 @@ executors:
       DOCKER_TEMP_IMAGE=simonsdave/dev-env-testing:bindle
     docker:
       - image: simonsdave/bionic-dev-env:v0.6.11
+        auth:
+          username: $DOCKER_EXECUTOR_DOCKERHUB_USERNAME
+          password: $DOCKER_EXECUTOR_DOCKERHUB_PASSWORD
 
 jobs:
   build_test_and_deploy:
@@ -84,4 +87,6 @@ workflows:
   commit:
     jobs:
       - build_test_and_deploy:
-          context: dev-env-testing
+          context:
+            - dev-env-testing
+            - docker-executor
