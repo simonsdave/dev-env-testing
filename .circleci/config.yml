@@ -73,6 +73,14 @@ jobs:
       - run:
           name: Test Docker Image
           command: echo 'should do some integration testing on the docker image just created'
+      - run:
+          name: Run docker image vulnerability risk assessment
+          command: |
+            curl \
+              -s \
+              -L \
+              https://raw.githubusercontent.com/simonsdave/clair-cicd/master/bin/assess-image-risk.sh | \
+              bash -s -- --verbose --whitelist 'file://clair-cicd-whitelist-dev-env.json' "${DOCKER_TEMP_IMAGE}"
       - deploy:
           name: Push Docker Image to Docker Hub
           command: |
