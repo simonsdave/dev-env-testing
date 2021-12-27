@@ -17,7 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-* Nothing
+* updated dev env simonsdave/bionic-dev-env:latest -> simonsdave/focal-dev-env:latest
 
 ### Removed
 
