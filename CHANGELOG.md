@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 * updated dev env simonsdave/bionic-dev-env:latest -> simonsdave/focal-dev-env:latest
+* start using ```run-codecov-uploader.sh```
 
 ### Removed
 
