@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * per [this](https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572) article, added
   explicit version to ```setup_remote_docker``` in CircleCI pipeline
 * add docker image vulnerability scanning in CircleCI pipeline
+* add ```LICENSE``` in repo's root directory
 
 ### Changed
 
