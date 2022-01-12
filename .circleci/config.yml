@@ -28,9 +28,9 @@ jobs:
           paths:
             - ./env
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-      # - run:
-      #   name: Run Pip Check
-      #   command: run-pip-check.sh
+      - run:
+          name: Run Pip Check
+          command: run-pip-check.sh
       - run:
           name: Lint Python Files
           command: run-flake8.sh
@@ -69,7 +69,9 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            dockerfiles/build-docker-image.sh "${PWD}/dist/dev_env_testing-$(python-version.sh).tar.gz" "${DOCKER_TEMP_IMAGE}"
+            dockerfiles/build-docker-image.sh \
+              "dist/dev_env_testing-$(python-version.sh).tar.gz" \
+              "${DOCKER_TEMP_IMAGE}"
       - run:
           name: Test Docker Image
           command: echo 'should do some integration testing on the docker image just created'
