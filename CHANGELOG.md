@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * updated dev env simonsdave/bionic-dev-env:latest -> simonsdave/focal-dev-env:latest
 * start using ```run-codecov-uploader.sh```
+* CircleCI setup_remote_docker version 19.03.13 -> 20.10.17
 
 ### Removed
 
