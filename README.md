@@ -5,7 +5,6 @@
 ![PythonVersions](https://img.shields.io/pypi/pyversions/dev-env-testing.svg?style=flat)
 ![status](https://img.shields.io/pypi/status/dev-env-testing.svg?style=flat)
 [![PyPI](https://img.shields.io/pypi/v/dev-env-testing.svg?style=flat)](https://pypi.python.org/pypi/dev-env-testing)
-[![Requirements](https://requires.io/github/simonsdave/dev-env-testing/requirements.svg?branch=master)](https://requires.io/github/simonsdave/dev-env-testing/requirements/?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/simonsdave/dev-env-testing/badge/master)](https://www.codefactor.io/repository/github/simonsdave/dev-env-testing/overview/master)
 [![CircleCI](https://circleci.com/gh/simonsdave/dev-env-testing/tree/master.svg?style=shield)](https://circleci.com/gh/simonsdave/dev-env-testing/tree/master)
 [![codecov](https://codecov.io/gh/simonsdave/dev-env-testing/branch/master/graph/badge.svg)](https://codecov.io/gh/simonsdave/dev-env-testing/branch/master)
